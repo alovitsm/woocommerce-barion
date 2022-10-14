@@ -39,7 +39,7 @@ class WC_Gateway_Barion_IPN_Handler {
             return;
         }
 
-        if($order->has_status(array('processing', 'completed'))) {
+        if($order->has_status(!array('pending'))) {
             $order->add_order_note(__('Barion callback ignored as the payment was already completed.', 'pay-via-barion-for-woocommerce'));
             return;
         }
